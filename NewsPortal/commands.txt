@@ -1,0 +1,84 @@
+from newsapp.models import *
+u1 = User.objects.create_user(username='First')
+u2 = User.objects.create_user(username='Second') 
+u3 = User.objects.create_user(username='Third')
+Author.objects.create(authorUser=u1)
+Author.objects.create(authorUser=u2) 
+Category.objects.create(name='Food')
+Category.objects.create(name='Entertainment') 
+Category.objects.create(name='Senate')        
+Category.objects.create(name='Populus') 
+Populist = Author.objects.get(id=1)
+Optimat = Author.objects.get(id=2) 
+Post.objects.create(author=Populist, categoryType='NW', title='Caisar right!', text = 'Bla wording test')
+Post.objects.create(author=Optimat, categoryType='AR', title='Caisar is not  right!', text = 'Bla wording test')
+Post.objects.create(author=Populist, categoryType='AR', title='Optimat is wrong!', text = 'Bla wording test')
+Post.objects.get(id=3).title
+Post.objects.get(id=1).postCategory.add(Category.objects.get(id=1))
+Post.objects.get(id=1).postCategory.add(Category.objects.get(id=3))
+Post.objects.get(id=2).postCategory.add(Category.objects.get(id=3)) 
+Post.objects.get(id=2).postCategory.add(Category.objects.get(id=4)) 
+Post.objects.get(id=3).postCategory.add(Category.objects.get(id=4)) 
+Post.objects.get(id=3).postCategory.add(Category.objects.get(id=1)) 
+Post.objects.get(id=3).postCategory.add(Category.objects.get(id=2)) 
+Comment.objects.create(commentPost=Post.objects.get(id=1), UserComment=Author.objects.get(id=2)
+.authorUser, text='something bad')
+Comment.objects.create(commentPost=Post.objects.get(id=2), UserComment=Author.objects.get(id=1)
+.authorUser, text='something bad')
+Comment.objects.create(commentPost=Post.objects.get(id=3), UserComment=Author.objects.get(id=1)
+.authorUser, text='something good')
+Comment.objects.create(commentPost=Post.objects.get(id=3), UserComment=Author.objects.get(id=2).authorUser,
+text='something bad')
+Comment.objects.create(commentPost=Post.objects.get(id=3), UserComment=User.objects.get(id=3), 
+text='something bad')
+.authorUser, text='something bad')
+Comment.objects.get(id=1).like()
+Comment.objects.get(id=1).like()
+Comment.objects.get(id=2).dislike() 
+Comment.objects.get(id=2).dislike()
+Comment.objects.get(id=2).dislike()
+Comment.objects.get(id=2).dislike()
+Comment.objects.get(id=2).dislike()
+Comment.objects.get(id=5).like()    
+Comment.objects.get(id=5).like()
+Comment.objects.get(id=5).like()
+Comment.objects.get(id=5).like()
+Comment.objects.get(id=5).like()    
+Post.objects.get(id=1).like()  
+Post.objects.get(id=1).like()
+Post.objects.get(id=2).like() 
+Post.objects.get(id=2).like()
+Post.objects.get(id=2).dislike() 
+Post.objects.get(id=2).dislike()
+Post.objects.get(id=3).like()    
+Post.objects.get(id=3).like()
+Post.objects.get(id=3).like()
+Post.objects.get(id=3).like()
+Post.objects.get(id=3).like()
+Post.objects.get(id=2).dislike() 
+Post.objects.get(id=2).dislike()
+ours = Author.objects.get(id=1)
+theirs = Author.objects.get(id=2) 
+Author.objects.get(id=1).update_rating()
+Author.objects.get(id=1).update_rating()   
+Author.objects.get(id=2).update_rating() 
+Author.objects.get(id=1).ratingAuthor    
+Author.objects.get(id=2).ratingAuthor    
+res = Author.objects.order_by('-ratingAuthor')
+res
+res = Author.objects.order_by('-ratingAuthor')[:1]
+res
+res = Post.objects.order_by('-rating')[:1].values()
+res
+Post.objects.order_by('-rating')[0].author.authorUser.username
+Post.objects.order_by('-rating').values('author__authorUser__username', 'rating', 'title', 'dat
+eCreation', 'categoryType', 'postCategory')[0]
+z = Post.objects.order_by('-rating')[0]  
+z.comment_set.all().values('dateCreation', 'UserComment__username', 'dateCreation', 'rating', '
+text')
+
+
+
+
+
+
