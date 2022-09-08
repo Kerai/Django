@@ -1,0 +1,18 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+Post
+{% endblock title %}
+ 
+{% block content %}
+<h1> {{ post.title }} </h1>
+<h8> {{ post.dateCreation }} </h8>
+<hr>
+<h2> {{ post.text|scensor }} </h2>
+<hr>
+<h5 style="display:inline;">by author:</h5> <h2 style="display:inline;">{{ post.author.authorUser.username }}</h2>
+<hr>
+<h10> Post rating: {{ post.rating }} </h10>
+{% endblock content %}
