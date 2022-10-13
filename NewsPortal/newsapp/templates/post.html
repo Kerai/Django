@@ -8,7 +8,7 @@ Post
  
 {% block content %}
 <h1> {{ post.title }} </h1>
-<h8> {{ post.dateCreation }} </h8>
+<h8> {{ post.dateCreation }} Post № {{ post.id }} Post type: {{ post.categoryType }}</h8>
 <hr>
 <h2> {{ post.text|scensor }} </h2>
 <hr>
