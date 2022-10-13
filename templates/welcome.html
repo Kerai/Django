@@ -1,0 +1,13 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+Welcome
+{% endblock title %}
+ 
+{% block content %}
+You logged in, chop-chop
+<hr>
+{% if is_not_Authors %}
+<button> <a href="news/upgrade/"> Want to be AUTHOR!</a> </button>
+{% endif %}
+{% endblock content %}
